@@ -1,43 +1,50 @@
 <template>
   <div id="tabBarContent" ref="tabBarRef">
-    <!-- <cmn-tab-bar :tabName="tabName"/> -->
-    <cmn-navigation />
+    <!-- <cmn-navigation /> -->
+    <router-link tag="div" class="tab-item" to="/recommend">
+      <span class="tab-link">推荐</span>
+    </router-link>
+    <router-link tag="div" class="tab-item" to="/singer">
+      <span class="tab-link">歌手</span>
+    </router-link>
+    <router-link tag="div" class="tab-item" to="/rank">
+      <span class="tab-link">排行</span>
+    </router-link>
+    <router-link tag="div" class="tab-item" to="/search">
+      <span class="tab-link">搜索</span>
+    </router-link>
   </div>
 </template>
 
 <script>
-import CmnTabBar from 'components/commonComponent/CmnTabBar'
 import CmnNavigation from 'components/commonComponent/CmnNavigation'
 export default {
   name: 'tabBarContent',
   components: {
-    CmnTabBar,
     CmnNavigation
   },
   data () {
-    return {
-      tabName: [
-        {
-          name: '推荐',
-          path: '/recommend'
-        },
-        {
-          name: '歌手',
-          path: '/singer'
-        },
-        {
-          name: '排行',
-          path: '/rank'
-        },
-        {
-          name: '搜索',
-          path: '/search'
-        }
-      ]
-    }
+    return {}
   },
   mounted () {},
   methods: {}
 }
 </script>
-<style scoped lang="stylus"></style>
+<style scoped lang="stylus">
+@import '~common/stylus/variable';
+
+#tabBarContent
+    display: flex
+    justify-content space-around
+    height: 44px
+    line-height: 44px
+    font-size: $font-size-medium
+    color: $color-text-d;
+    .tab-item
+      .tab-link
+        padding-bottom: 5px
+      &.router-link-active
+        .tab-link
+          color: $color-theme
+          border-bottom: 2px solid $color-theme
+</style>

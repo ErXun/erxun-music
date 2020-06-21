@@ -39,4 +39,6 @@ export default {
 #navigationItem
   .isActive
     color $color-theme
+    height 35px
+    border-bottom 2px solid $color-theme
 </style>
