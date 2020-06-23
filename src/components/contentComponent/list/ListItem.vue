@@ -1,7 +1,7 @@
 <template>
   <div class="listItem">
     <div class="img">
-      <img :src="itemData.imgurl" alt />
+      <img v-lazy="itemData.imgurl" alt />
     </div>
     <div class="desc">
       <p class="title">{{itemData.creator.name}}</p>

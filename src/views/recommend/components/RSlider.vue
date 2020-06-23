@@ -3,7 +3,7 @@
     <slider v-if="banners.length">
       <div v-for="(item,index) in banners" :key="index">
         <a :href="item.linkUrl">
-          <img :src="item.picUrl" alt />
+          <img :src="item.picUrl" alt @load="imgLoad" class="needsclick"/>
         </a>
       </div>
     </slider>
@@ -33,6 +33,12 @@ export default {
   mounted () {
   },
   methods: {
+    imgLoad () {
+      if (!this.isChecked) {
+        this.$emit('imgLoadEvent')
+        this.isChecked = true
+      }
+    }
   }
 }
 </script>

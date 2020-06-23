@@ -1,6 +1,6 @@
 <template>
   <div class="hotSingLists">
-    <p class="title">热门歌单推荐</p>
+    <p class="title" v-if="listArr.length">热门歌单推荐</p>
     <div class="list">
       <list-item v-for="(item,index) in listArr" :key="index" :itemData="item" />
     </div>
