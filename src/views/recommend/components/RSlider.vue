@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import Slider from 'components/commonComponent/slider/Slider'
+import Slider from 'components/common/slider/Slider'
 export default {
   name: 'rSlider',
   components: {

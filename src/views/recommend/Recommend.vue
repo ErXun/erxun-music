@@ -18,8 +18,8 @@ import { ERR_OK } from 'api/config'
 
 import RSlider from './components/RSlider'
 import HotSingLists from './components/HotSingLists'
-import Scroll from 'components/commonComponent/scroll/Scroll'
-import Loading from 'components/commonComponent/loading/Loading'
+import Scroll from 'components/common/scroll/Scroll'
+import Loading from 'components/common/loading/Loading'
 export default {
   name: 'recommend',
   components: {

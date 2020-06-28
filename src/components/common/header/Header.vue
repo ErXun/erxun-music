@@ -1,5 +1,5 @@
 <template>
-  <div id="cmn_header">
+  <div class="headers">
     <div class="leftBar">
       <slot name="left"></slot>
     </div>
@@ -14,12 +14,12 @@
 
 <script>
 export default {
-  name: 'cmn_header'
+  name: 'headers'
 }
 </script>
 
 <style scoped lang="stylus">
-#cmn_header
+.headers
   display flex
   height 100%
   width 100%
@@ -29,5 +29,4 @@ export default {
   .middleBar
     flex 1
     text-align center
-
 </style>

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import ListItem from 'components/contentComponent/list/ListItem'
+import ListItem from 'components/content/list/ListItem'
 export default {
   name: 'hotSingLists',
   components: {

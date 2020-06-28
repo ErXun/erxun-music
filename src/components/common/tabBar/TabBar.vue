@@ -1,6 +1,6 @@
 <template>
-  <!-- <div id="cmnTabBar" ref="cmnTabBarRef" v-if="Object.keys(tabName).length !== 0"> -->
-  <div id="cmnTabBar" ref="cmnTabBarRef" @click="clickEvent">
+  <!-- <div id="tabBar" ref="tabBarRef" v-if="Object.keys(tabName).length !== 0"> -->
+  <div id="tabBar" ref="tabBarRef" @click="clickEvent">
     <div
       v-for="(item,index) in tabName"
       :key="index"
@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'cmnTabBar',
+  name: 'tabBar',
   props: {
     tabName: {
       type: Array,
@@ -42,8 +42,8 @@ export default {
     },
     // 原生JS
     clickEvent () {
-      // var parentEle = document.querySelector('#cmnTabBar')
-      let parentEle = this.$refs.cmnTabBarRef
+      // var parentEle = document.querySelector('#tabBar')
+      let parentEle = this.$refs.tabBarRef
       let childArr = parentEle.children
       for (let i = 0; i < childArr.length; i++) {
         childArr[i].addEventListener('click', () => {
@@ -61,7 +61,7 @@ export default {
 <style scoped lang="stylus">
 @import '~common/stylus/variable';
 
-#cmnTabBar {
+#tabBar {
   display: flex;
   justify-content: space-around;
   height: 44px;

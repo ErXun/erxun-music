@@ -5,13 +5,12 @@
     <keep-alive>
       <router-view />
     </keep-alive>
-
   </div>
 </template>
 
 <script>
-import HeaderContent from 'components/contentComponent/HeaderContent'
-import TabBarContent from 'components/contentComponent/TabBarContent'
+import HeaderContent from 'components/content/HeaderContent'
+import TabBarContent from 'components/content/TabBarContent'
 export default {
   name: 'App',
   components: {

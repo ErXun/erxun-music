@@ -20,6 +20,10 @@ export default {
     data: {
       type: Array,
       default: null
+    },
+    listenScroll: {
+      type: Boolean,
+      default: false
     }
   },
   data () {
@@ -46,6 +50,12 @@ export default {
         probeType: this.probeType,
         click: this.click
       })
+      if (this.listenScroll) {
+        const _this = this
+        this.scroll.on('scroll', (pos) => {
+          _this.$emit('scroll', pos)
+        })
+      }
     },
     // 启用 better-scroll, 默认 开启。
     enable () {
@@ -58,12 +68,16 @@ export default {
     // 重新计算 better-scroll，当 DOM 结构发生变化的时候务必要调用确保滚动的效果正常。
     refresh () {
       this.scroll && this.scroll.refresh()
+    },
+    // apply 用来接收 this.scroll.scrollTo 所需要的参数
+    scrollTo () {
+      this.scroll && this.scroll.scrollTo.apply(this.scroll, arguments)
+    },
+    scrollToElement () {
+      this.scroll && this.scroll.scrollToElement.apply(this.scroll, arguments)
     }
-
   }
-
 }
 </script>
 <style scoped>
-
 </style>

@@ -1,22 +1,22 @@
 <template>
   <div id="headerContent">
-    <cmn-header>
+    <music-header>
       <div slot="middle">
         <img :src="defaultIcon" alt="">
         <span>ErXun Music</span>
       </div>
-    </cmn-header>
+    </music-header>
   </div>
 </template>
 
 <script>
-import CmnHeader from 'components/commonComponent/CmnHeader'
+import MusicHeader from 'components/common/header/Header'
 
 import defaultIcon from 'common/image/default.png'
 export default {
   name: 'headerContent',
   components: {
-    CmnHeader
+    MusicHeader
   },
   data () {
     return {

@@ -17,11 +17,11 @@
 </template>
 
 <script>
-import CmnNavigation from 'components/commonComponent/CmnNavigation'
+// import Navigation from 'components/common/navigation/Navigation'
 export default {
   name: 'tabBarContent',
   components: {
-    CmnNavigation
+    // Navigation
   },
   data () {
     return {}

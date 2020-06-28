@@ -1,26 +1,26 @@
 <template>
   <div class="navigation">
-    <cmn-navigation-item path="/recommend">
+    <navigation-item path="/recommend">
       <div slot="barName">推荐</div>
-    </cmn-navigation-item>
-    <cmn-navigation-item path="/singer">
+    </navigation-item>
+    <navigation-item path="/singer">
       <div slot="barName">歌手</div>
-    </cmn-navigation-item>
-    <cmn-navigation-item path="/rank">
+    </navigation-item>
+    <navigation-item path="/rank">
       <div slot="barName">排行</div>
-    </cmn-navigation-item>
-    <cmn-navigation-item path="/search">
+    </navigation-item>
+    <navigation-item path="/search">
       <div slot="barName">搜索</div>
-    </cmn-navigation-item>
+    </navigation-item>
   </div>
 </template>
 
 <script>
-import CmnNavigationItem from './CmnNavigationItem'
+import NavigationItem from './NavigationItem'
 export default {
   name: 'navigation',
   components: {
-    CmnNavigationItem
+    NavigationItem
   }
 }
 </script>
