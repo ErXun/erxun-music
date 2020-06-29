@@ -1,6 +1,7 @@
 <template>
   <div id="singer">
-    <list-view :dataList="singerList"/>
+    <list-view :dataList="singerList" @select="selectDetail"/>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -11,6 +12,7 @@ import Scroll from 'components/common/scroll/Scroll'
 import { getSingerList } from 'api/singer'
 import { ERR_OK } from 'api/config'
 import Singer from 'common/js/singer'
+import {mapMutations} from 'vuex'
 
 const HOT_NAME = '热门'
 const SINGER_LENGTH = 10
@@ -76,7 +78,16 @@ export default {
         return a.title.charCodeAt(0) - b.title.charCodeAt(0)
       })
       return hot.concat(ret)
-    }
+    },
+    selectDetail (item) {
+      this.$router.push({
+        path: `/singer/${item.id}`
+      })
+      this.setSinger(item)
+    },
+    ...mapMutations({
+      setSinger: 'SET_SINGER'
+    })
   }
 }
 </script>

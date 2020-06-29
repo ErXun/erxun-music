@@ -4,6 +4,7 @@ import App from './App'
 import router from './router'
 import fastclick from 'fastclick'
 import VueLazyLoad from 'vue-lazyload'
+import store from './store'
 
 import 'common/stylus/index.styl'
 Vue.use(VueLazyLoad, {
@@ -18,5 +19,6 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })

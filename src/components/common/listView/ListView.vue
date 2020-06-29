@@ -9,10 +9,10 @@
     @scroll="scroll"
   >
     <ul>
-      <li v-for="(e,index) in dataList" :key="index" ref="listRef">
+      <li v-for="(e,index) in dataList" :key="index" ref="listRef" >
         <h4 class="title">{{e.title}}</h4>
         <ul>
-          <li v-for="(item,index) in e.items" :key="index" class="descInfo">
+          <li v-for="(item,index) in e.items" :key="index" class="descInfo" @click="select(item)">
             <div class="imgStyle">
               <img :src="item.imgSrc" alt />
             </div>
@@ -139,6 +139,9 @@ export default {
         height += item.clientHeight
         this.listHeight.push(height)
       }
+    },
+    select (item) {
+      this.$emit('select', item)
     }
   }
 }
@@ -149,7 +152,7 @@ export default {
 #listView {
   position: relative;
   height: 100%;
-  width: 100%;
+  // width: 100%;
   color: $color-text-l;
   font-size: $font-size-medium;
   overflow: hidden;
