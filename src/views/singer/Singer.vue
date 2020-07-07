@@ -36,6 +36,7 @@ export default {
       getSingerList().then(res => {
         if (res.code === ERR_OK) {
           this.singerList = this.normalizeData(res.data.list)
+          // console.log(this.singerList)
         }
       })
     },
@@ -49,7 +50,7 @@ export default {
       value.forEach((ele, index) => {
         if (index < SINGER_LENGTH) {
           map.hot.items.push(
-            new Singer(ele.Fsinger_id, ele.Fsinger_name, ele.Fsinger_mid)
+            new Singer(ele.Fsinger_mid, ele.Fsinger_name, ele.Fsinger_mid)
           )
         }
         const key = ele.Findex
@@ -60,7 +61,7 @@ export default {
           }
         }
         map[key].items.push(
-          new Singer(ele.Fsinger_id, ele.Fsinger_name, ele.Fsinger_mid)
+          new Singer(ele.Fsinger_mid, ele.Fsinger_name, ele.Fsinger_mid)
         )
       })
       // 为了得到有序列表，我们需要处理 map
@@ -80,6 +81,7 @@ export default {
       return hot.concat(ret)
     },
     selectDetail (item) {
+      console.log(item.id, 'item')
       this.$router.push({
         path: `/singer/${item.id}`
       })
