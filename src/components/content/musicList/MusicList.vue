@@ -10,13 +10,17 @@
     </song-header>
     <div class="bg" :style="bgImage">
       <div class="filter"></div>
+      <div class="play" @click="playSong">
+        <img :src="playImg" alt />
+        <span>随机播放全部</span>
+      </div>
     </div>
     <div class="recommend">
       <scroll class="recommend_content" ref="scrollRef" v-if="songs.length !==0">
         <ul class="sonfList">
-          <li v-for="(item,index) in songs" :key="index">
-              <h3>{{item.name}}</h3>
-              <p class="desc">{{item.singer}}-{{item.album}}</p>
+          <li v-for="(item,index) in songs" :key="index" @click="selectItem(item,index)">
+            <h3>{{item.name}}</h3>
+            <p class="desc">{{item.singer}}-{{item.album}}</p>
           </li>
         </ul>
       </scroll>
@@ -29,6 +33,9 @@
 
 <script>
 import back from 'common/image/back.png'
+import playImg from 'common/image/play.png'
+import { mapActions } from 'vuex'
+
 import SongHeader from 'components/common/header/Header'
 import Scroll from 'components/common/scroll/Scroll'
 import Loading from 'components/common/loading/Loading'
@@ -74,12 +81,25 @@ export default {
   },
   data () {
     return {
-      back
+      back,
+      playImg
     }
   },
   methods: {
+    ...mapActions([
+      'selectPlay'
+    ]),
     goBack () {
-      this.$router.go(-1)
+      // this.$router.go(-1)
+      this.$router.back()
+    },
+    playSong () {},
+    selectItem (item, index) {
+      // console.log(item, index)
+      this.selectPlay({
+        list: this.songs,
+        index
+      })
     }
     // test () {
     //   if (this.$refs.scrollRef) {
@@ -95,7 +115,7 @@ export default {
 <style scoped lang="stylus">
 @import '~common/stylus/variable';
 
-.musicList
+.musicList {
   position: fixed;
   background-color: $color-background;
   z-index: 100;
@@ -105,7 +125,7 @@ export default {
   bottom: 0;
   color: $color-text;
 
-  .songTitle
+  .songTitle {
     position: fixed;
     z-index: 1;
     top: 0;
@@ -116,44 +136,80 @@ export default {
     line-height: 40px;
     font-size: $font-size-large;
 
-    img
+    img {
       width: 25px;
       height: 25px;
+    }
+  }
 
-  .bg
+  .bg {
     position: relative;
     width: 100%;
     height: 290px;
 
-    .filter
+    .filter {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       background: rgba(7, 17, 27, 0.4);
+    }
 
-  .recommend
+    .play {
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      color: #ffcd32;
+      height: 30px;
+      height: 30px;
+      border: 1px solid #ffcd32;
+      line-height: 30px;
+      border-radius: 40px;
+      padding: 2px 15px;
+      font-size: 12px;
+
+      img {
+        width: 25px;
+        height: 25px;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .recommend {
     position: fixed;
     width: 100%;
     top: 290px;
     bottom: 0;
 
-    .recommend_content
+    .recommend_content {
       height: 100%;
       overflow: hidden;
-      .sonfList
-        padding 30px 25px
-        li
-          padding 15px 0
-          font-size $font-size-medium
-          .desc
-            color: hsla(0,0%,100%,.3);
-            margin-top: 10px
-    .loading_container
-        position: absolute
-        width: 100%
-        top: 50%
-        transform: translateY(-50%)
 
+      .sonfList {
+        padding: 30px 25px;
+
+        li {
+          padding: 15px 0;
+          font-size: $font-size-medium;
+
+          .desc {
+            color: hsla(0, 0%, 100%, 0.3);
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+
+    .loading_container {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}
 </style>

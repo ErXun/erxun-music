@@ -7,6 +7,8 @@ import VueLazyLoad from 'vue-lazyload'
 import store from './store'
 
 import 'common/stylus/index.styl'
+import 'common/icon/iconfont.css'
+
 Vue.use(VueLazyLoad, {
   loading: require('common/image/default.png')
 })
